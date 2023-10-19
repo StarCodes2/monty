@@ -57,10 +57,12 @@ void opcode_handler(unsigned int line_number)
 
 	instruction_t instr[] = {
 		{"push", push},
-		{"pall", pall}
+		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop}
 	};
 
-	for (i = 0; i < 2; i++)
+	for (i = 0; i < 4; i++)
 	{
 		if (_strcmp(instr[i].opcode, av[0]) == 0)
 		{
