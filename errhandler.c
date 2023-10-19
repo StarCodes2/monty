@@ -39,6 +39,7 @@ void print_err(int line_num, char *msg, char *suffix)
 		errmsg = _strcat(errmsg, msg);
 		if (suffix != NULL)
 			errmsg = _strcat(errmsg, suffix);
+		_free(numstr);
 	}
 	else
 	{
@@ -48,5 +49,5 @@ void print_err(int line_num, char *msg, char *suffix)
 	}
 	errmsg = _strcat(errmsg, "\n");
 
-	_write(2, errmsg), _free(errmsg), _free(numstr);
+	_write(2, errmsg), _free(errmsg);
 }

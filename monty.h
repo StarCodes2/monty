@@ -16,7 +16,7 @@ int _strcmp(char *s1, char *s2);
 void print_err(int line_num, char *msg, char *suffix);
 char *intstr(int line_num);
 void _free(void *mem);
-void opcode_handler(char **arv, unsigned int line_number);
+void opcode_handler(unsigned int line_number);
 char **line_av(char *s, char *deli);
 int word_count(char *s, char *deli);
 int compare_cs(char c, char *s);

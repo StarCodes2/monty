@@ -36,8 +36,9 @@ int main(int argc, char *argv[])
 		line_number++;
 		av = line_av(line, " \n");
 		if (av != NULL)
-			opcode_handler(av, line_number);
+			opcode_handler(line_number);
 		_free(av);
+		av = NULL;
 	}
 	_free(av), _free(line), freestack(top);
 	fclose(strm);
@@ -47,11 +48,10 @@ int main(int argc, char *argv[])
 
 /**
  * opcode_handler - handles which function to call depending on the opcode
- * @av: an array of pointers, pointing to an opcode and its arguments, if any
  * @line_number: holds the line number where the current opcode is in the file
  */
 
-void opcode_handler(char **arv, unsigned int line_number)
+void opcode_handler(unsigned int line_number)
 {
 	int i, check = 0;
 
@@ -62,7 +62,7 @@ void opcode_handler(char **arv, unsigned int line_number)
 
 	for (i = 0; i < 2; i++)
 	{
-		if (_strcmp(instr[i].opcode, arv[0]) == 0)
+		if (_strcmp(instr[i].opcode, av[0]) == 0)
 		{
 			instr[i].f(&top, line_number);
 			check = 1;
@@ -71,8 +71,8 @@ void opcode_handler(char **arv, unsigned int line_number)
 
 	if (!check)
 	{
-		print_err(line_number, "unknown instruction ", arv[0]);
-		_free(arv), _free(line), freestack(top);
+		print_err(line_number, "unknown instruction ", av[0]);
+		_free(av), _free(line), freestack(top);
 		exit(EXIT_FAILURE);
 	}
 }

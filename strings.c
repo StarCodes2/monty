@@ -54,7 +54,7 @@ char *intstr(int num)
 	if (num < 1)
 		return (NULL);
 
-	if (num > 9999)
+	if (num > 9999 && num < 100000)
 		len = 9;
 	else if (num > 999)
 		len = 8;
@@ -70,7 +70,7 @@ char *intstr(int num)
 	numstr = malloc(sizeof(char) * len);
 	if (numstr == NULL)
 	{
-		print_err(0, "Error: malloc failed", "");
+		print_err(0, "Error: malloc failed", NULL);
 		_free(av), _free(line), freestack(top);
 		exit(EXIT_FAILURE);
 	}
