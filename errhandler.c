@@ -16,9 +16,12 @@ void print_err(int line_num, char *msg, char *suffix)
 		return;
 
 	if (line_num > 0)
+	{
 		numstr = intstr(line_num);
-	len += _strlen(numstr);
-	len += _strlen(suffix);
+		len += _strlen(numstr);
+	}
+	if (suffix != NULL)
+		len += _strlen(suffix);
 	len += _strlen(msg);
 	len += 2;
 

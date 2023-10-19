@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/**
+ * push - add a new value to the top of the stack
+ * @stack: points to a pointer to the stack
+ * @line_number: hold the line number of the current opcode
+ */
+
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp, *new;
@@ -8,14 +14,15 @@ void push(stack_t **stack, unsigned int line_number)
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		_free(av), freestack(top);
+		_free(av), _free(line), freestack(top);
 		print_err(0, "Error: malloc failed", NULL);
 		exit(EXIT_FAILURE);
 	}
 	if (av[1] == NULL || !_isint(av[1]))
 	{
-		_free(av), freestack(top);
+		_free(av), _free(line), freestack(top);
 		print_err(line_number, "usage: push integer", NULL);
+		exit(EXIT_FAILURE);
 	}
 
 	new->n = atoi(av[1]);
@@ -29,5 +36,31 @@ void push(stack_t **stack, unsigned int line_number)
 		temp->prev = new;
 		new->next = temp;
 	}
-	temp = new;
+	*stack = new;
+}
+
+/**
+ * pall - prints all the values in the stack
+ * @stack: points to a pointer to the stack
+ * @line_number: hold the line number of the current opcode
+ */
+
+void pall(stack_t **stack, unsigned int line_number)
+{
+	int index = 0;
+	stack_t *temp = *stack;
+	char buffer[MAX_BUFFER];
+
+	if (temp != NULL && line_number > 0)
+	{
+		while (temp->prev)
+			temp = temp->prev;
+		while (temp)
+		{
+			num_to_buffer(temp->n, &index, buffer);
+			buffer[index++] = '\n';
+			temp = temp->next;
+		}
+		print_buffer(buffer, &index);
+	}
 }

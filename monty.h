@@ -21,6 +21,8 @@ char **line_av(char *s, char *deli);
 int word_count(char *s, char *deli);
 int compare_cs(char c, char *s);
 int _isint(char *str);
+void num_to_buffer(int num, int *index, char *buffer);
+void print_buffer(char *buffer, int *index);
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -56,9 +58,12 @@ typedef struct instruction_s
 
 void freestack(stack_t *stack);
 void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 
 extern stack_t *top;
 extern char **av;
 extern char *line;
+
+#define MAX_BUFFER 1024
 
 #endif /* MONTY_H */

@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		print_err(0, "USAGE: monty file" ,NULL);
+		print_err(0, "USAGE: monty file", NULL);
 		exit(EXIT_FAILURE);
 	}
 
@@ -47,6 +47,7 @@ int main(int argc, char *argv[])
 /**
  * opcode_handler - handles which function to call depending on the opcode
  * @av: an array of pointers, pointing to an opcode and its arguments, if any
+ * @line_number: holds the line number where the current opcode is in the file
  */
 
 void opcode_handler(char **av, unsigned int line_number)
@@ -55,10 +56,10 @@ void opcode_handler(char **av, unsigned int line_number)
 
 	instruction_t instr[] = {
 		{"push", push},
-		{NULL, NULL}
+		{"pall", pall}
 	};
 
-	for (i = 0; i < 1; i++)
+	for (i = 0; i < 2; i++)
 	{
 		if (_strcmp(instr[i].opcode, av[0]) == 0)
 		{
