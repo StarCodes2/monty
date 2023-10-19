@@ -48,6 +48,5 @@ void print_err(int line_num, char *msg, char *suffix)
 			errmsg = _strcat(errmsg, suffix);
 	}
 	errmsg = _strcat(errmsg, "\n");
-
 	_write(2, errmsg), _free(errmsg);
 }
