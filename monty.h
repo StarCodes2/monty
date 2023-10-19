@@ -1,10 +1,12 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#define _POSIX_C_SOURCE 200809L
+
 #include <unistd.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int _write(int fd, char *text);
 char *_strcat(char *dest, char *src);

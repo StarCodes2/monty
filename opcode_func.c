@@ -6,7 +6,7 @@ void push(stack_t **stack, unsigned int line_number)
 	
 	temp = *stack;
 	new = malloc(sizeof(stack_t));
-	if (temp == NULL)
+	if (new == NULL)
 	{
 		_free(av), freestack(top);
 		print_err(0, "Error: malloc failed", NULL);

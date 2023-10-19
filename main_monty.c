@@ -58,9 +58,9 @@ void opcode_handler(char **av, unsigned int line_number)
 		{NULL, NULL}
 	};
 
-	for (i = 0; instr[i].opcode; i++)
+	for (i = 0; i < 1; i++)
 	{
-		if (_strcmp(instr[i].opcode, av[1]) == 0)
+		if (_strcmp(instr[i].opcode, av[0]) == 0)
 		{
 			instr[i].f(&top, line_number);
 			check = 1;
