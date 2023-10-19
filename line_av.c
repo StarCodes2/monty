@@ -22,8 +22,8 @@ char **line_av(char *s, char *deli)
 	av = malloc(sizeof(char *) * ++word_c);
 	if (av == NULL)
 	{
-		print_err(0, "Error: malloc failed", "");
-		freestack(top), _free(s);
+		print_err(0, "Error: malloc failed", NULL);
+		_free(av), _free(line), freestack(top);
 		exit(EXIT_FAILURE);
 	}
 

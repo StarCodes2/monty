@@ -9,19 +9,20 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp, *new;
-	
+
 	temp = *stack;
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		_free(av), _free(line), freestack(top);
 		print_err(0, "Error: malloc failed", NULL);
+		_free(av), _free(line), freestack(top);
 		exit(EXIT_FAILURE);
 	}
+
 	if (av[1] == NULL || !_isint(av[1]))
 	{
-		_free(av), _free(line), freestack(top);
 		print_err(line_number, "usage: push integer", NULL);
+		_free(av), _free(line), freestack(new), freestack(top);
 		exit(EXIT_FAILURE);
 	}
 

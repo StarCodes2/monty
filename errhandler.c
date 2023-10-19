@@ -28,8 +28,8 @@ void print_err(int line_num, char *msg, char *suffix)
 	errmsg = malloc(sizeof(char) * len);
 	if (errmsg == NULL)
 	{
-		_write(2, "Error: malloc failed");
-		_free(numstr), freestack(top);
+		_write(STDERR_FILENO, "Error: malloc failed");
+		_free(av), _free(line), _free(numstr), freestack(top);
 		exit(EXIT_FAILURE);
 	}
 
@@ -48,5 +48,5 @@ void print_err(int line_num, char *msg, char *suffix)
 	}
 	errmsg = _strcat(errmsg, "\n");
 
-	_write(2, errmsg), _free(errmsg);
+	_write(2, errmsg), _free(errmsg), _free(numstr);
 }

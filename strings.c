@@ -71,7 +71,7 @@ char *intstr(int num)
 	if (numstr == NULL)
 	{
 		print_err(0, "Error: malloc failed", "");
-		freestack(top);
+		_free(av), _free(line), freestack(top);
 		exit(EXIT_FAILURE);
 	}
 	numstr[0] = 'L';

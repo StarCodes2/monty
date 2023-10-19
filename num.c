@@ -12,7 +12,7 @@ int _isint(char *str)
 	int i = 0, len = _strlen(str);
 
 	if (str == NULL)
-		return (0);;
+		return (0);
 	if (str[i] == '-')
 		i++;
 
@@ -57,7 +57,7 @@ void num_to_buffer(int num, int *index, char *buffer)
  * print_buffer - prints the content of a buffer
  * @buffer: points to a buffer
  * @index: points to the buffer's index
- */ 
+ */
 
 void print_buffer(char *buffer, int *index)
 {
