@@ -56,17 +56,23 @@ void opcode_handler(unsigned int line_number)
 	int i, check = 0;
 
 	instruction_t instr[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop}
+		{"push", push_op},
+		{"pall", pall_op},
+		{"pint", pint_op},
+		{"pop", pop_op},
+		{"swap", swap_op},
+		{"add", add_op},
+		{"nop", NULL},
+		{"sub", sub_op},
+		{NULL, NULL}
 	};
 
-	for (i = 0; i < 4; i++)
+	for (i = 0; instr[i].opcode; i++)
 	{
 		if (_strcmp(instr[i].opcode, av[0]) == 0)
 		{
-			instr[i].f(&top, line_number);
+			if (instr[i].f)
+				instr[i].f(&top, line_number);
 			check = 1;
 		}
 	}

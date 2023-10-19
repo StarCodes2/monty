@@ -57,10 +57,13 @@ typedef struct instruction_s
 } instruction_t;
 
 void freestack(stack_t *stack);
-void push(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
-void pint(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
+void push_op(stack_t **stack, unsigned int line_number);
+void pall_op(stack_t **stack, unsigned int line_number);
+void pint_op(stack_t **stack, unsigned int line_number);
+void pop_op(stack_t **stack, unsigned int line_number);
+void swap_op(stack_t **stack, unsigned int line_number);
+void add_op(stack_t **stack, unsigned int line_number);
+void sub_op(stack_t **stack, unsigned int line_number);
 
 extern stack_t *top;
 extern char **av;

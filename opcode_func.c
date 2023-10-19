@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * push - add a new value to the top of the stack
+ * push_op - add a new value to the top of the stack
  * @stack: points to a pointer to the stack
  * @line_number: hold the line number of the current opcode
  */
 
-void push(stack_t **stack, unsigned int line_number)
+void push_op(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp, *new;
 
@@ -41,12 +41,12 @@ void push(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pall - prints all the values in the stack
+ * pall_op - prints all the values in the stack
  * @stack: points to a pointer to the stack
  * @line_number: hold the line number of the current opcode
  */
 
-void pall(stack_t **stack, unsigned int line_number)
+void pall_op(stack_t **stack, unsigned int line_number)
 {
 	int index = 0;
 	stack_t *temp = *stack;
@@ -67,12 +67,12 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pint - prints the value at the top position in the stack
+ * pint_op - prints the value at the top position in the stack
  * @stack: points to a pointer to the stack
  * @line_number: hold the line number of the current opcode
  */
 
-void pint(stack_t **stack, unsigned int line_number)
+void pint_op(stack_t **stack, unsigned int line_number)
 {
 	int index = 0;
 	char buffer[MAX_BUFFER];
@@ -94,12 +94,12 @@ void pint(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pop - removes the top element of the stack
+ * pop_op - removes the top element of the stack
  * @stack: points to a pointer to the stack
  * @line_number: hold the line number of the current opcode
  */
 
-void pop(stack_t **stack, unsigned int line_number)
+void pop_op(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
@@ -119,4 +119,27 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	temp->next = NULL;
 	freestack(temp);
+}
+
+/**
+ * swap_op - swaps the value of the top two elements in the stack
+ * @stack: points to a pointer to the stack
+ * @line_number: hold the line number of the current opcode
+ */
+
+void swap_op(stack_t **stack, unsigned int line_number)
+{
+	int tmp;
+	stack_t *temp = *stack;
+
+	if (temp == NULL || temp->next == NULL)
+	{
+		print_err(line_number, "can't swap, stack too short", NULL);
+		_free(av), _free(line), freestack(top);
+		exit(EXIT_FAILURE);
+	}
+
+	tmp = temp->n;
+	temp->n = temp->next->n;
+	temp->next->n = tmp;
 }
