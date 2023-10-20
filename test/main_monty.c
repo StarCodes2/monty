@@ -65,6 +65,7 @@ void opcode_handler(unsigned int line_number)
 		{"pop", pop_op},
 		{"swap", swap_op},
 		{"add", add_op},
+		{"#", NULL},
 		{"nop", NULL},
 		{"sub", sub_op},
 		{"div", div_op},
