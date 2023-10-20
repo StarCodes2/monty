@@ -43,9 +43,6 @@ void pstr_op(stack_t **stack, unsigned int line_number)
 	char buffer[MAX_BUFFER];
 	(void) line_number;
 
-	if (temp == NULL)
-		buffer[index++] = '\n';
-
 	while (temp)
 	{
 		if (temp->n == 0 || (temp->n < 0 || temp->n > 127))
