@@ -51,8 +51,9 @@ void pall_op(stack_t **stack, unsigned int line_number)
 	int index = 0;
 	stack_t *temp = *stack;
 	char buffer[MAX_BUFFER];
+	(void) line_number;
 
-	if (temp != NULL && line_number > 0)
+	if (temp != NULL)
 	{
 		while (temp->prev)
 			temp = temp->prev;
@@ -61,6 +62,9 @@ void pall_op(stack_t **stack, unsigned int line_number)
 			num_to_buffer(temp->n, &index, buffer);
 			buffer[index++] = '\n';
 			temp = temp->next;
+
+			if (index == MAX_BUFFER - 1)
+				print_buffer(buffer, &index);
 		}
 		print_buffer(buffer, &index);
 	}
