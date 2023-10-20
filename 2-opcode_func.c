@@ -71,7 +71,7 @@ void div_op(stack_t **stack, unsigned int line_number)
 
 	if (temp->n == 0)
 	{
-		print_err(line_number, "can't div, stack too short", NULL);
+		print_err(line_number, "division by zero", NULL);
 		_free(av), _free(line), freestack(top);
 		exit(EXIT_FAILURE);
 	}

@@ -34,6 +34,9 @@ int main(int argc, char *argv[])
 	while (getline(&line, &size, strm) != -1)
 	{
 		line_number++;
+		if (line[0] == '#')
+			continue;
+
 		av = line_av(line, " \n");
 		if (av != NULL)
 			opcode_handler(line_number);
@@ -63,7 +66,6 @@ void opcode_handler(unsigned int line_number)
 		{"swap", swap_op},
 		{"add", add_op},
 		{"nop", NULL},
-		{"#", NULL},
 		{"sub", sub_op},
 		{"div", div_op},
 		{"mul", mul_op},
