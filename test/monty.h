@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void readfile(FILE *strm);
 int _write(int fd, char *text);
 char *_strcat(char *dest, char *src);
 int _strlen(char *s);
@@ -68,6 +69,10 @@ void pint(stack_t **stack, unsigned int line_number);
 void div_op(stack_t **stack, unsigned int line_number);
 void mul_op(stack_t **stack, unsigned int line_number);
 void mod_op(stack_t **stack, unsigned int line_number);
+void pchar_op(stack_t **stack, unsigned int line_number);
+void pstr_op(stack_t **stack, unsigned int line_number);
+void rotl_op(stack_t **stack, unsigned int line_number);
+void rotr_op(stack_t **stack, unsigned int line_number);
 
 extern stack_t *top;
 extern char **av;

@@ -14,9 +14,7 @@ stack_t *top = NULL;
 
 int main(int argc, char *argv[])
 {
-	unsigned int line_number = 0;
 	FILE *strm;
-	size_t size;
 
 	if (argc != 2)
 	{
@@ -31,22 +29,35 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
+	readfile(strm);
+	fclose(strm);
+
+	return (0);
+}
+
+/**
+ * readfile - reads a file from file stream line by line to get opcodes
+ * @strm: points to the file stream
+ */
+
+void readfile(FILE *strm)
+{
+	unsigned int line_number = 0;
+	size_t size;
+
 	while (getline(&line, &size, strm) != -1)
 	{
 		line_number++;
-		if (line[0] == '#')
-			continue;
-
 		av = line_av(line, " \n");
 		if (av != NULL)
-			opcode_handler(line_number);
+		{
+			if (av[0][0] != '#' && _strcmp(av[0], "nop"))
+				opcode_handler(line_number);
+		}
 		_free(av);
 		av = NULL;
 	}
 	_free(av), _free(line), freestack(top);
-	fclose(strm);
-
-	return (0);
 }
 
 /**
@@ -65,12 +76,14 @@ void opcode_handler(unsigned int line_number)
 		{"pop", pop_op},
 		{"swap", swap_op},
 		{"add", add_op},
-		{"#", NULL},
-		{"nop", NULL},
 		{"sub", sub_op},
 		{"div", div_op},
 		{"mul", mul_op},
 		{"mod", mod_op},
+		{"pchar", pchar_op},
+		{"pstr", pstr_op},
+		{"rotl", rotl_op},
+		{"rotr", rotr_op},
 		{NULL, NULL}
 	};
 

@@ -34,7 +34,7 @@ void num_to_buffer(int num, int *index, char *buffer)
 {
 	if (buffer != NULL)
 	{
-		if (*index == MAX_BUFFER)
+		if (*index == MAX_BUFFER - 1)
 			print_buffer(buffer, index);
 		if (num < 0)
 		{
@@ -47,9 +47,6 @@ void num_to_buffer(int num, int *index, char *buffer)
 			num_to_buffer(num / 10, index, buffer);
 		buffer[*index] = (num % 10) + '0';
 		*index += 1;
-
-		if (*index == MAX_BUFFER)
-			print_buffer(buffer, index);
 	}
 }
 
