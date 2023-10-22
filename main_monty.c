@@ -2,7 +2,9 @@
 
 char **av = NULL;
 char *line = NULL;
+char data_struct = 's';
 stack_t *top = NULL;
+stack_t *bottom = NULL;
 
 /**
  * main - open and read the monty file line by line
@@ -51,7 +53,11 @@ void readfile(FILE *strm)
 		av = line_av(line, " \n");
 		if (av != NULL)
 		{
-			if (av[0][0] != '#' && _strcmp(av[0], "nop"))
+			if (!_strcmp(av[0], "stack"))
+				data_struct = 's';
+			else if (!_strcmp(av[0], "queue"))
+				data_struct = 'q';
+			else if (av[0][0] != '#' && _strcmp(av[0], "nop"))
 				opcode_handler(line_number);
 		}
 		_free(av);

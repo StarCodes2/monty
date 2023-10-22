@@ -8,9 +8,8 @@
 
 void push_op(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp, *new;
+	stack_t *new;
 
-	temp = *stack;
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
@@ -27,17 +26,11 @@ void push_op(stack_t **stack, unsigned int line_number)
 	}
 
 	new->n = atoi(av[1]);
-	new->prev = NULL;
-	if (temp == NULL)
-	{
-		new->next = NULL;
-	}
-	else
-	{
-		temp->prev = new;
-		new->next = temp;
-	}
-	*stack = new;
+
+	if (data_struct == 's')
+		stack_push(stack, new);
+	else if (data_struct == 'q')
+		queue_push(&bottom, new);
 }
 
 /**

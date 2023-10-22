@@ -73,10 +73,14 @@ void pchar_op(stack_t **stack, unsigned int line_number);
 void pstr_op(stack_t **stack, unsigned int line_number);
 void rotl_op(stack_t **stack, unsigned int line_number);
 void rotr_op(stack_t **stack, unsigned int line_number);
+void stack_push(stack_t **top, stack_t *);
+void queue_push(stack_t **bottom, stack_t *);
 
 extern stack_t *top;
+extern stack_t *bottom;
 extern char **av;
 extern char *line;
+extern char data_struct;
 
 #define MAX_BUFFER 1024
 
